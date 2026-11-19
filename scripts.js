@@ -9,11 +9,12 @@ document.addEventListener("DOMContentLoaded",function() {
         event.preventDefault();
 
         var email = inputtedEmail.value.trim();
-        if (email === "") {
-            message.textContent = "Please enter a valid email address.";
-        } else {
+
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             message.textContent = "Thank you! Your email address: " + email + " has been added to our mailing list!";
-            email.value = "";
+            inputtedEmail.value = "";
+        } else {
+            message.textContent = "Please enter a valid email address.";
         }     
     });
 });
